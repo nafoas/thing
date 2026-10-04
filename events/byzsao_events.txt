@@ -1,18 +1,5 @@
 add_namespace = byzsao
 
-# Opening: the world that never was
-country_event = {
-	id = byzsao.1
-	title = byzsao.1.t
-	desc = byzsao.1.d
-	picture = GFX_report_event_generic_read_write
-	is_triggered_only = yes
-
-	option = {
-		name = byzsao.1.a
-	}
-}
-
 # News: the last war of antiquity begins
 news_event = {
 	id = byzsao.2

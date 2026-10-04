@@ -159,9 +159,6 @@
  sao_denounce_the_druj_desc:0 "Broadcast the Saoshyant's sermons against the godless Romans across the border."
 
  # ---- Events ----
- byzsao.1.t:0 "A Different East"
- byzsao.1.d:0 "In this world the Prophet of Islam was never born. There were no Arab conquests in the seventh century, and Rome and Persia kept fighting each other for another thirteen hundred years.\n\nThe Eastern Roman Empire held on to Constantinople, Anatolia, Greece, Syria and Egypt. In 1917, worn down by war and famine, its people rose up. The Basileus fled, and the §RRoman Proletarian Republic§! was proclaimed from the Hippodrome.\n\nAcross the Euphrates the Sasanian line endured until 1921, when a magus proclaimed himself the last Saoshyant foretold in the Avesta. The King of Kings knelt before him. The §YSaoshyantate of Eranshahr§! now rules from Mesopotamia to the Hindu Kush and across Arabia.\n\nThe oldest rivalry in the world has a new ideological edge."
- byzsao.1.a:0 "So this is the world."
  byzsao.2.t:0 "The Last War of Antiquity"
  byzsao.2.d:0 "For the hundredth time in two thousand years, Roman and Persian armies are moving towards the Euphrates. This time the Romans march under the red banner of the proletariat, and the Eranians march under the sacred fire of the Saoshyant. Both sides say this will be the last war between them."
  byzsao.2.a:0 "History repeats itself."

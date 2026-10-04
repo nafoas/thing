@@ -1,0 +1,4 @@
+aw_chronicles = {
+	icon = generic_political_actions
+	allowed = { always = yes }
+}

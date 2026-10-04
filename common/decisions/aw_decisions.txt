@@ -1,0 +1,16 @@
+aw_chronicles = {
+	aw_read_the_chronicle = {
+		icon = generic_research
+		cost = 0
+		days_re_enable = 7
+		complete_effect = { country_event = { id = aw.2 } }
+		ai_will_do = { factor = 0 }
+	}
+	aw_read_the_world_chronicle = {
+		icon = generic_research
+		cost = 0
+		days_re_enable = 7
+		complete_effect = { country_event = { id = aw.1 } }
+		ai_will_do = { factor = 0 }
+	}
+}

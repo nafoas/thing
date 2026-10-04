@@ -1,7 +1,7 @@
 # The Roman Proletarian Republic
 # The Eastern Roman Empire never fell to the Caliphate (there was none).
 # In 1917 the Basileus was toppled by the Constantinople Soviet.
-capital = 341 # Constantinople
+capital = 797 # Constantinople
 
 oob = "TUR_1936"
 

@@ -1,0 +1,18 @@
+# Redraws the world at game start. The logic lives in common/scripted_effects/aw_world_effects.txt
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = { NOT = { has_global_flag = aw_world_setup } }
+				set_global_flag = aw_world_setup
+				aw_redraw_world = yes
+				aw_world_diplomacy = yes
+				aw_world_governments = yes
+				every_country = {
+					limit = { is_ai = no }
+					country_event = { id = aw.1 days = 1 }
+				}
+			}
+		}
+	}
+}

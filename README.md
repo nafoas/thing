@@ -1,46 +1,65 @@
 # Fire and Hammer: The Unbroken East
 
-A Hearts of Iron IV alternate-history mod (built for 1.16.x).
+A Hearts of Iron IV total alternate-history world mod (built for 1.16.x).
 
-**Premise:** Muhammad is never born, so the Arab conquests never happen. Rome and Persia keep
-fighting for another thirteen centuries. By 1936 the Middle East is split between two powers:
+**Premise:** Muhammad is never born. There is no Islam and no Arab conquests, and fourteen centuries of
+consequences follow. Rome and Persia both survive. Charlemagne never happens. The Baltic pagans keep their
+gods. The Norse stay in Vinland, the Inca and Mexica survive contact, and Aksum, Wagadu, Majapahit and
+Vijayanagara never fall.
 
-- **The Roman Proletarian Republic** (plays as `TUR`): the Eastern Roman Empire, overthrown in
-  1917 by the Constantinople Soviet. Its capital is Constantinople. It holds Anatolia, Greece,
-  the Levant and Egypt.
-- **The Saoshyantate of Eranshahr** (plays as `PER`): the surviving Sasanian realm, now a
-  Zoroastrian theocracy ruled by a magus who claims to be Astvat-ereta, the last Saoshyant.
-  It holds Persia, Mesopotamia, Afghanistan and Arabia.
+By 1936 the world is ready to split:
 
-## Contents
+- **The Roman Proletarian Republic:** the Eastern Roman Empire, turned communist by the 1917 Constantinople
+  Soviet. It rules from Sicily to the Nile and leads the **Red Ecumene**.
+- **The Saoshyantate of Eranshahr:** the surviving Sasanian realm, now a Zoroastrian theocracy under a
+  self-proclaimed messiah. It leads the **Concord of the Sacred Fire**.
+- **The North Sea Empire:** Cnut's Anglo-Danish-Norwegian empire, never broken up, with dominions in Markland,
+  the Cape and Nýjaland. It leads the **North Sea Thing**.
+- 114 other nations, including the Hanseatic Union, the Avar Khaganate, Lord Novgorod the Great, the Khazar
+  Khaganate, the Empire of the Great Song, Tawantinsuyu, the Commonwealth of Vinland and the Republic of Fusang.
 
-| Feature | Files |
+**Every one of the game's 1046 states is reassigned.** See [`WORLD.md`](WORLD.md) for the full chronicle of all
+117 nations.
+
+## What the mod does
+
+| Feature | Where |
 |---|---|
-| Rewritten country history (communist Rome, theocratic Eranshahr, leaders, parties) | `history/countries/` |
-| Map setup at game start (annexations and transfers of cored states) | `common/on_actions/byzsao_on_actions.txt` |
-| A focus tree for each country (15 for Rome, 14 for the Saoshyantate) | `common/national_focus/` |
-| 13 national spirits | `common/ideas/byzsao_ideas.txt` |
-| A decision category for each side | `common/decisions/` |
-| An intro event, a war news event and a flavour event for each side | `events/byzsao_events.txt` |
-| Custom flags for every ideology | `gfx/flags/` |
+| Whole-world map, subjects, factions and cores at game start | `common/scripted_effects/aw_world_effects.txt`, run from `common/on_actions/aw_world_on_actions.txt` |
+| Name, flag, ideology, leader, party names and national spirit for each of the 115 world nations | same, plus `common/ideas/aw_world_ideas.txt` and `gfx/flags/AW_*` |
+| Starting armies for nations that did not exist in vanilla | same |
+| A chronicle event for every nation (shown to players at start, re-readable from the *Chronicles* decisions) | `events/aw_world_events.txt` |
+| A shared 22-focus tree for every nation except Rome and Eranshahr, replacing vanilla trees whose history no longer exists | `common/national_focus/aw_world_focus.txt` |
+| Hand-made focus trees, events, decisions and spirits for Rome and the Saoshyantate | `common/national_focus/rpr_focus.txt`, `sao_focus.txt`, `events/byzsao_events.txt`, … |
 
-The two focus trees both lead to **The Last War of Antiquity**: Rome's *Last War of Antiquity*
-and the Saoshyantate's *Asha Against Druj* each give a war goal against the other.
+## Editing the world
+
+All the generated files above come from one table, `tools/world_data.py`. Each country entry there has its tag,
+name, ideology, leader, capital, states, national spirit, flag design and lore.
+`tools/vanilla_states.json` holds the 1936 owner and name of every vanilla state.
+
+```sh
+python3 tools/build_world.py              # validate and regenerate everything
+python3 tools/build_world.py --no-flags   # skip the (slow) flag rendering
+```
+
+The build refuses to run if any state is unassigned, assigned twice, or if a capital lies outside its
+country.
 
 ## Install
 
-1. Copy this folder into `Documents/Paradox Interactive/Hearts of Iron IV/mod/fire_and_hammer/`.
-2. Next to it, create `mod/fire_and_hammer.mod` with the contents of `descriptor.mod` plus
-   one line: `path="mod/fire_and_hammer"`.
+1. Copy this folder to `Documents/Paradox Interactive/Hearts of Iron IV/mod/fire_and_hammer/`.
+2. Next to it, create `mod/fire_and_hammer.mod` containing `descriptor.mod` plus one extra line:
+   `path="mod/fire_and_hammer"`.
 3. Enable the mod in the launcher and start a 1936 game.
 
 ## Notes and limitations
 
-- Territory changes run in `on_startup`, so the country selection screen still shows vanilla
-  borders. The new map appears once the game starts.
-- The mod doesn't override any vanilla state files. Territory moves by annexing whole tags
-  (GRE, EGY, SYR, LEB, PAL, JOR → Rome; IRQ, AFG, SAU, YEM, OMA → Saoshyantate) and by
-  transferring any state that carries one of those cores.
-- Small British-held Gulf territories (Kuwait, Aden, the Trucial coast) and Cyprus stay with
-  their vanilla owners.
-- Leaders have no custom portraits and use the game's generic ones.
+- The world is redrawn in `on_startup`, so the country-selection screen still shows vanilla borders. Pick the
+  vanilla country whose tag is listed for your nation in `WORLD.md` (for example `ENG` for the North Sea
+  Empire).
+- New nations are spawned by releasing their tag and then transferring their states. Vanilla armies stay
+  with their original tags, so units may begin outside their country's new borders.
+- Vanilla national spirits of reused tags are not removed. Vanilla decisions that check a tag may still
+  appear.
+- The mod has not been run in-game yet. Check `error.log` on first launch.
