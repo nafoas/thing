@@ -1,0 +1,9 @@
+rpr_proletarian_ecumene = {
+	icon = generic_political_actions
+	allowed = { tag = TUR }
+}
+
+sao_sacred_fire = {
+	icon = generic_political_actions
+	allowed = { tag = PER }
+}

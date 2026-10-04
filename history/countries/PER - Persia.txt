@@ -1,0 +1,58 @@
+# The Saoshyantate of Eranshahr
+# Without the Arab conquests the Sasanian line endured. In 1921 a magus
+# proclaimed himself Astvat-ereta, the last Saoshyant foretold in the Avesta,
+# and the King of Kings knelt before him.
+capital = 266 # Tehran
+
+oob = "PER_1936"
+
+set_research_slots = 3
+set_stability = 0.7
+set_war_support = 0.5
+
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1
+	tech_recon = 1
+	gw_artillery = 1
+}
+
+set_cosmetic_tag = SAO
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1921.3.21"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 75
+	fascism = 10
+	democratic = 8
+	communism = 7
+}
+
+set_party_name = { ideology = neutrality long_name = SAO_neutrality_party_long name = SAO_neutrality_party }
+set_party_name = { ideology = communism long_name = SAO_communism_party_long name = SAO_communism_party }
+
+add_ideas = {
+	sao_rule_of_the_saoshyant
+}
+
+create_country_leader = {
+	name = "Saoshyant Astvat-ereta"
+	desc = "POLITICS_ASTVAT_ERETA_DESC"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = { }
+}
+
+create_corps_commander = {
+	name = "Shahrbaraz Suren"
+	skill = 4
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 3
+	traits = { }
+}

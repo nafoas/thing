@@ -1,0 +1,73 @@
+rpr_proletarian_ecumene = {
+	rpr_hippodrome_rally = {
+		icon = generic_political_rally
+		cost = 50
+		days_re_enable = 180
+		available = { has_war = no }
+		complete_effect = {
+			add_stability = 0.05
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	rpr_expropriate_the_monasteries = {
+		icon = generic_industry
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			add_tech_bonus = { name = rpr_expropriate_the_monasteries bonus = 1 uses = 1 category = industry }
+			add_stability = -0.03
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	rpr_agitate_in_ctesiphon = {
+		icon = generic_civil_support
+		cost = 50
+		days_re_enable = 120
+		visible = { country_exists = PER }
+		available = { country_exists = PER }
+		complete_effect = {
+			PER = {
+				add_stability = -0.05
+				add_popularity = { ideology = communism popularity = 0.03 }
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+sao_sacred_fire = {
+	sao_kindle_an_atash_behram = {
+		icon = generic_political_rally
+		cost = 50
+		days_re_enable = 180
+		complete_effect = {
+			add_war_support = 0.05
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	sao_magian_census = {
+		icon = generic_prepare_civil_war
+		cost = 75
+		days_re_enable = 365
+		complete_effect = {
+			add_manpower = 20000
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	sao_denounce_the_druj = {
+		icon = generic_civil_support
+		cost = 50
+		days_re_enable = 120
+		visible = { country_exists = TUR }
+		available = { country_exists = TUR }
+		complete_effect = {
+			TUR = { add_stability = -0.05 }
+			add_war_support = 0.02
+		}
+		ai_will_do = { factor = 1 }
+	}
+}

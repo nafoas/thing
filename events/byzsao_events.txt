@@ -1,0 +1,77 @@
+add_namespace = byzsao
+
+# Opening: the world that never was
+country_event = {
+	id = byzsao.1
+	title = byzsao.1.t
+	desc = byzsao.1.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = byzsao.1.a
+	}
+}
+
+# News: the last war of antiquity begins
+news_event = {
+	id = byzsao.2
+	title = byzsao.2.t
+	desc = byzsao.2.d
+	picture = GFX_news_event_generic_army
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = byzsao.2.a
+		trigger = { NOT = { tag = TUR tag = PER } }
+	}
+	option = {
+		name = byzsao.2.b
+		trigger = { tag = TUR }
+	}
+	option = {
+		name = byzsao.2.c
+		trigger = { tag = PER }
+	}
+}
+
+# Saoshyantate: the Saoshyant's proclamation
+country_event = {
+	id = byzsao.3
+	title = byzsao.3.t
+	desc = byzsao.3.d
+	picture = GFX_report_event_generic_rally
+	is_triggered_only = yes
+
+	option = {
+		name = byzsao.3.a
+		add_war_support = 0.05
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = byzsao.3.b
+		add_stability = 0.05
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Roman Proletarian Republic: the icon question returns
+country_event = {
+	id = byzsao.4
+	title = byzsao.4.t
+	desc = byzsao.4.d
+	picture = GFX_report_event_generic_rally
+	is_triggered_only = yes
+
+	option = {
+		name = byzsao.4.a
+		add_stability = 0.05
+		ai_chance = { factor = 60 }
+	}
+	option = {
+		name = byzsao.4.b
+		swap_ideas = { remove_idea = rpr_iconoclast_marxism add_idea = rpr_iconodule_marxism }
+		ai_chance = { factor = 40 }
+	}
+}

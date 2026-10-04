@@ -1,0 +1,250 @@
+focus_tree = {
+	id = sao_focus
+	country = {
+		factor = 0
+		modifier = { add = 100 tag = PER }
+	}
+	default = no
+	continuous_focus_position = { x = 50 y = 1100 }
+	focus = {
+		id = sao_coming_of_the_saoshyant
+		icon = GFX_goal_generic_political_pressure
+		x = 3
+		y = 0
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+			country_event = { id = byzsao.3 days = 1 }
+		}
+	}
+
+	focus = {
+		id = sao_council_of_magi
+		icon = GFX_goal_generic_propaganda
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = sao_coming_of_the_saoshyant }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = sao_council_of_magi
+		}
+	}
+
+	focus = {
+		id = sao_immortals_reborn
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 4
+		y = 1
+		cost = 10
+		prerequisite = { focus = sao_coming_of_the_saoshyant }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = sao_immortals_reborn
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = sao_path_of_the_lone_flame
+		icon = GFX_goal_generic_defence
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = { focus = sao_council_of_magi }
+		mutually_exclusive = { focus = sao_concord_of_the_sacred_fire }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = sao_path_of_the_lone_flame
+		}
+	}
+
+	focus = {
+		id = sao_concord_of_the_sacred_fire
+		icon = GFX_goal_generic_major_alliance
+		x = 3
+		y = 2
+		cost = 10
+		prerequisite = { focus = sao_council_of_magi }
+		mutually_exclusive = { focus = sao_path_of_the_lone_flame }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			create_faction = sao_faction_sacred_fire
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = sao_cataphracts_of_steel
+		icon = GFX_goal_generic_army_tanks
+		x = 5
+		y = 2
+		cost = 10
+		prerequisite = { focus = sao_immortals_reborn }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = sao_cataphracts_of_steel bonus = 1 uses = 2 category = armor }
+		}
+	}
+
+	focus = {
+		id = sao_asha_against_druj
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		x = 4
+		y = 3
+		cost = 15
+		prerequisite = { focus = sao_cataphracts_of_steel }
+		prerequisite = { focus = sao_path_of_the_lone_flame focus = sao_concord_of_the_sacred_fire }
+		available = {
+			country_exists = TUR
+			has_war = no
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			every_state = {
+				limit = { is_owned_by = TUR NOT = { is_core_of = GRE } }
+				add_claim_by = ROOT
+			}
+			create_wargoal = { type = annex_everything target = TUR }
+			add_war_support = 0.1
+			every_country = { news_event = { id = byzsao.2 hours = 6 } }
+		}
+	}
+
+	focus = {
+		id = sao_frashokereti
+		icon = GFX_goal_generic_national_unity
+		x = 2
+		y = 3
+		cost = 15
+		prerequisite = { focus = sao_path_of_the_lone_flame focus = sao_concord_of_the_sacred_fire }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = sao_frashokereti
+		}
+	}
+
+	focus = {
+		id = sao_fire_temples_of_industry
+		icon = GFX_goal_generic_production
+		x = 8
+		y = 0
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_ideas = sao_flame_of_atar
+		}
+	}
+
+	focus = {
+		id = sao_oil_of_the_gulf
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 7
+		y = 1
+		cost = 10
+		prerequisite = { focus = sao_fire_temples_of_industry }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+		}
+	}
+
+	focus = {
+		id = sao_qanat_network
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 9
+		y = 1
+		cost = 10
+		prerequisite = { focus = sao_fire_temples_of_industry }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			every_owned_state = {
+				limit = { is_core_of = ROOT }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+		}
+	}
+
+	focus = {
+		id = sao_forges_of_isfahan
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 7
+		y = 2
+		cost = 10
+		prerequisite = { focus = sao_oil_of_the_gulf }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = arms_factory size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
+		}
+	}
+
+	focus = {
+		id = sao_gondishapur_academy
+		icon = GFX_goal_generic_scientific_exchange
+		x = 9
+		y = 2
+		cost = 15
+		prerequisite = { focus = sao_qanat_network }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = sao_fleet_of_the_persian_gulf
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 8
+		y = 3
+		cost = 10
+		prerequisite = { focus = sao_forges_of_isfahan }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_coastal = yes free_building_slots = { building = dockyard size > 1 include_locked = yes } }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			navy_experience = 25
+		}
+	}
+}

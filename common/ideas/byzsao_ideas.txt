@@ -1,0 +1,125 @@
+ideas = {
+	country = {
+		# ---------------- Roman Proletarian Republic ----------------
+		rpr_heirs_of_justinian = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		rpr_iconoclast_marxism = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				communism_drift = 0.05
+				stability_factor = 0.05
+			}
+		}
+		rpr_iconodule_marxism = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				communism_drift = 0.05
+				war_support_factor = 0.05
+				consumer_goods_factor = -0.05
+			}
+		}
+		rpr_constantinople_soviet = {
+			picture = generic_political_support
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+			}
+		}
+		rpr_red_themata = {
+			picture = generic_manpower
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription = 0.01
+				army_org_factor = 0.05
+			}
+		}
+		rpr_varangian_guard = {
+			picture = generic_army_support
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				experience_gain_army = 0.1
+			}
+		}
+		rpr_greek_fire = {
+			picture = generic_naval_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_dockyard = 0.1
+			}
+		}
+
+		# ---------------- Saoshyantate of Eranshahr ----------------
+		sao_rule_of_the_saoshyant = {
+			picture = generic_religious
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.1
+				war_support_factor = 0.05
+				research_speed_factor = -0.05
+			}
+		}
+		sao_flame_of_atar = {
+			picture = generic_religious
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		sao_council_of_magi = {
+			picture = generic_political_support
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+			}
+		}
+		sao_immortals_reborn = {
+			picture = generic_army_support
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+		sao_path_of_the_lone_flame = {
+			picture = generic_fortify
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.1
+				neutrality_drift = 0.05
+			}
+		}
+		sao_frashokereti = {
+			picture = generic_religious
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_morale_factor = 0.1
+				stability_factor = 0.1
+				war_support_factor = 0.1
+			}
+		}
+	}
+}
